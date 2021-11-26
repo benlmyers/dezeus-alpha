@@ -10,6 +10,15 @@ class Dezeus_Tests {
         Variable b = new Variable();
         Variable c = new Variable();
 
-        Statement p = a.and(b);
+        Statement p = a.implies(b);
+        Statement q = b.implies(c);
+        Statement r = a.implies(c);
+
+        Statement assumption = p.and(q);
+        Statement conclusion = r;
+
+        Proposition proposition = new Proposition(assumption, conclusion);
+
+        // proposition.prove();
     }
 }

@@ -11,4 +11,24 @@ public abstract class Statement {
     public Statement and(Statement b) {
         return new And(this, b);
     }
+
+    public Statement or(Statement b) {
+        return new Or(this, b);
+    }
+
+    public Statement not() {
+        return new Not(this);
+    }
+
+    public Statement given(Statement ant) {
+        return new Cond(ant, this);
+    }
+
+    public Statement implies(Statement cons) {
+        return new Cond(this, cons);
+    }
+
+    public Statement iff(Statement b) {
+        return new Bicond(this, b);
+    }
 }
