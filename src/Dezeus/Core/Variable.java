@@ -1,12 +1,11 @@
 package Dezeus.Core;
 
-public class Variable implements Statement {
+public class Variable extends Statement {
 
     public Variable() {
         super();
     }
 
-    @Override
     public Truth getTruth() {
         return new Truth(false);
     }

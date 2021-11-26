@@ -1,6 +1,6 @@
 package Dezeus.Core;
 
-public class Truth implements Statement {
+public class Truth extends Statement {
 
     private Boolean value;
 
@@ -8,7 +8,6 @@ public class Truth implements Statement {
         this.value = value;
     }
 
-    @Override
     public Truth getTruth() {
         return this;
     }
@@ -21,11 +20,5 @@ public class Truth implements Statement {
 
     public static Truth and(Truth a, Truth b) {
         return new Truth(a.getValue() && b.getValue());
-    }
-
-    // Convenience Methods
-
-    public Truth and(Truth b) {
-        return and(this, b);
     }
 }

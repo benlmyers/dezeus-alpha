@@ -1,6 +1,14 @@
 package Dezeus.Core;
 
-public interface Statement {
+import Dezeus.Logic.*;
 
-    public Truth getTruth();
+public abstract class Statement {
+
+    public abstract Truth getTruth();
+
+    // Convenience Methods
+
+    public Statement and(Statement b) {
+        return new And(this, b);
+    }
 }

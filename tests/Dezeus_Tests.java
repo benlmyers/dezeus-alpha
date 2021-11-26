@@ -6,6 +6,10 @@ class Dezeus_Tests {
 
         System.out.println("Dezeus (Alpha)");
 
-        Variable a, b, c = new Variable();
+        Variable a = new Variable();
+        Variable b = new Variable();
+        Variable c = new Variable();
+
+        Statement p = a.and(b);
     }
 }
