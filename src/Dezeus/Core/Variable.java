@@ -1,10 +1,11 @@
 package Dezeus.Core;
 
 import java.util.Set;
+import java.util.HashSet;
 
 public class Variable extends Statement {
 
-    public static Set<String> usedNames;
+    public static Set<String> usedNames = new HashSet<String>();
 
     public String name;
 

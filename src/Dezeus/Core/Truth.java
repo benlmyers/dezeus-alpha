@@ -1,7 +1,5 @@
 package Dezeus.Core;
 
-import java.util.Set;
-
 public class Truth extends Statement {
 
     private Boolean value;

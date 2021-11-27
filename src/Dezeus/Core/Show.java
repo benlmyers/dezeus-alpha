@@ -14,6 +14,7 @@ public class Show {
     }
 
     public Truth show(Deduction deduction) {
+        Logger.log(this);
         return new Truth(false);
     }
 }

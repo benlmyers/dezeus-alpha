@@ -6,9 +6,9 @@ class Dezeus_Tests {
 
         System.out.println("Dezeus (Alpha)");
 
-        Variable a = new Variable();
-        Variable b = new Variable();
-        Variable c = new Variable();
+        Variable a = new Variable("A");
+        Variable b = new Variable("B");
+        Variable c = new Variable("C");
 
         Statement p = a.implies(b);
         Statement q = b.implies(c);
@@ -19,5 +19,6 @@ class Dezeus_Tests {
 
         Proposition proposition = new Proposition(assumption, conclusion);
 
+        proposition.prove();
     }
 }
