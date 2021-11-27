@@ -36,6 +36,14 @@ public class Statements implements Iterable<Statement> {
         return this.statements;
     }
 
+    public Set<Variable> getVariables() {
+        Set<Variable> variables = new HashSet<>();
+        while(statements.iterator().hasNext()) {
+            variables.addAll(statements.iterator().next().getVariables());
+        }
+        return variables;
+    }
+
     public int size() {
         return statements.size();
     }

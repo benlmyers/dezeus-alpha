@@ -15,6 +15,13 @@ public class Variable extends Statement {
         usedNames.add(name);
     }
 
+    @Override
+    public Set<Variable> getVariables() {
+        Set<Variable> set = new HashSet<>();
+        set.add(this);
+        return set;
+    }
+
     public int logicalSize() {
         return 1;
     }

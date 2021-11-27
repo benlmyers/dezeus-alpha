@@ -16,15 +16,21 @@ public class Show {
     }
 
     public Truth show() {
-        // TODO: Implement
+        Logger.log(this);
+        // Use existing theorems to aid in proving.
+        // Otherwise, use a truth table to brute force the proof.
         return new Truth(false);
     }
 
     public String toString() {
-        return statement.toString();
+        return deduction.getLevelIndentation() + "Show " + statement.toString();
     }
 
     public Statement getStatement() {
         return statement;
+    }
+
+    public Deduction getDeduction() {
+        return deduction;
     }
 }

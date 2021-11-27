@@ -3,7 +3,7 @@ package Dezeus.Logic;
 import Dezeus.Core.*;
 
 public class Or extends Statement {
-    
+
     private Statement a, b;
 
     public Or(Statement a, Statement b) {
@@ -21,5 +21,10 @@ public class Or extends Statement {
 
     public String toString() {
         return a.groupedString() + " \\/ " + b.groupedString();
+    }
+
+    @Override
+    public Statements getChildren() {
+        return new Statements(a, b);
     }
 }

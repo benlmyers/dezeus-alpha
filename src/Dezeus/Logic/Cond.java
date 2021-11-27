@@ -26,6 +26,11 @@ public class Cond extends Statement {
     }
 
     @Override
+    public Statements getChildren() {
+        return new Statements(ant, cons);
+    }
+
+    @Override
     public Deduction dezeus() {
         return new Deduction(new Statements(), new Statements(ant));
     }

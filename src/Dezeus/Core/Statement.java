@@ -1,10 +1,24 @@
 package Dezeus.Core;
 
+import java.util.Set;
+
 import Dezeus.Logic.*;
 
 public abstract class Statement {
 
     public abstract Truth getTruth();
+
+    public Set<Variable> getVariables() {
+        return getChildren().getVariables();
+    }
+
+    public Boolean hasChildren() {
+        return getChildren() != null;
+    }
+
+    public Statements getChildren() {
+        return null;
+    }
 
     // Deduction Methods
 

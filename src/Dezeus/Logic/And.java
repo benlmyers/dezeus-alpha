@@ -20,6 +20,11 @@ public class And extends Statement {
     }
 
     @Override
+    public Statements getChildren() {
+        return new Statements(a, b);
+    }
+
+    @Override
     public Deduction dezeus() {
         Statements statements = new Statements(a, b);
         return new Deduction(statements);

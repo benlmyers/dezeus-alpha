@@ -24,4 +24,12 @@ public class Proposition {
     public int getNumber() {
         return number;
     }
+
+    public String toString() {
+        return "Proposition " + number + ": " + assumption + " |- " + conclusion;
+    }
+
+    public Statement getStatement() {
+        return assumption.implies(conclusion);
+    }
 }

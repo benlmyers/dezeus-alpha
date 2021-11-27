@@ -22,4 +22,9 @@ public class Bicond extends Statement {
     public String toString() {
         return a.groupedString() + " <=> " + b.groupedString();
     }
+
+    @Override
+    public Statements getChildren() {
+        return new Statements(a, b);
+    }
 }
