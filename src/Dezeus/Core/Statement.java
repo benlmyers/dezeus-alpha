@@ -1,7 +1,5 @@
 package Dezeus.Core;
 
-import java.util.Set;
-
 import Dezeus.Logic.*;
 
 public abstract class Statement {
@@ -10,8 +8,8 @@ public abstract class Statement {
 
     // Deduction Methods
 
-    public Statements dezeus() {
-        return new Statements(this);
+    public Deduction dezeus() {
+        return new Deduction(this);
     }
 
     // Utility Methods

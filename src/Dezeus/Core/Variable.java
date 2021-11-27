@@ -13,8 +13,4 @@ public class Variable extends Statement {
     public Truth getTruth() {
         return new Truth(false);
     }
-
-    public Statements dezeus() {
-        return new Statements(this);
-    }
 }

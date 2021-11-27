@@ -1,7 +1,5 @@
 package Dezeus.Core;
 
-import java.util.Set;
-
 public class Show {
 
     private Statement statement;
@@ -11,11 +9,11 @@ public class Show {
     }
 
     public Truth show() {
-        Statements knowns = new Statements();
-        return show(knowns);
+        Deduction deduction = new Deduction();
+        return show(deduction);
     }
 
-    public Truth show(Statements knowns) {
+    public Truth show(Deduction deduction) {
         return new Truth(false);
     }
 }

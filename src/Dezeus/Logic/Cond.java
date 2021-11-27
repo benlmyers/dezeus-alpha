@@ -18,4 +18,9 @@ public class Cond extends Statement {
     public Truth getTruth() {
         return Truth.cond(ant.getTruth(), cons.getTruth());
     }
+
+    @Override
+    public Deduction dezeus() {
+        return new Deduction(new Statements(ant), new Statements(cons));
+    }
 }

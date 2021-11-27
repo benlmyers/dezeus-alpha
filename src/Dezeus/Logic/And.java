@@ -19,7 +19,9 @@ public class And extends Statement {
         return Truth.and(a.getTruth(), b.getTruth());
     }
 
-    public Statements dezeus() {
-        return new Statements(a, b);
+    @Override
+    public Deduction dezeus() {
+        Statements statements = new Statements(a, b);
+        return new Deduction(statements);
     }
 }

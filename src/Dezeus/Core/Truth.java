@@ -10,11 +10,6 @@ public class Truth extends Statement {
         this.value = value;
     }
 
-    public Statements dezeus() {
-        // TODO Auto-generated method stub
-        return new Statements(this);
-    }
-
     public Truth getTruth() {
         return this;
     }
