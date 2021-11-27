@@ -10,6 +10,10 @@ public class Not extends Statement {
         this.a = a;
     }
 
+    public int logicalSize() {
+        return a.logicalSize();
+    }
+
     public Truth getTruth() {
         return Truth.not(a.getTruth());
     }

@@ -11,7 +11,15 @@ public class And extends Statement {
         this.b = b;
     }
 
+    public int logicalSize() {
+        return a.logicalSize() + b.logicalSize();
+    }
+
     public Truth getTruth() {
         return Truth.and(a.getTruth(), b.getTruth());
+    }
+
+    public Statements dezeus() {
+        return new Statements(a, b);
     }
 }

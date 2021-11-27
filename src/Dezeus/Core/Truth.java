@@ -1,5 +1,7 @@
 package Dezeus.Core;
 
+import java.util.Set;
+
 public class Truth extends Statement {
 
     private Boolean value;
@@ -8,8 +10,17 @@ public class Truth extends Statement {
         this.value = value;
     }
 
+    public Statements dezeus() {
+        // TODO Auto-generated method stub
+        return new Statements(this);
+    }
+
     public Truth getTruth() {
         return this;
+    }
+
+    public int logicalSize() {
+        return 1;
     }
 
     public Boolean getValue() {

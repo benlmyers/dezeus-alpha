@@ -11,6 +11,10 @@ public class Cond extends Statement {
         this.cons = cons;
     }
 
+    public int logicalSize() {
+        return ant.logicalSize() + cons.logicalSize();
+    }
+
     public Truth getTruth() {
         return Truth.cond(ant.getTruth(), cons.getTruth());
     }

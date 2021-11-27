@@ -19,6 +19,5 @@ class Dezeus_Tests {
 
         Proposition proposition = new Proposition(assumption, conclusion);
 
-        // proposition.prove();
     }
 }

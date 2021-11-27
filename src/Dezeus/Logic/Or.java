@@ -11,6 +11,10 @@ public class Or extends Statement {
         this.b = b;
     }
 
+    public int logicalSize() {
+        return a.logicalSize() + b.logicalSize();
+    }
+
     public Truth getTruth() {
         return Truth.or(a.getTruth(), b.getTruth());
     }
