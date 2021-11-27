@@ -18,4 +18,8 @@ public class Or extends Statement {
     public Truth getTruth() {
         return Truth.or(a.getTruth(), b.getTruth());
     }
+
+    public String toString() {
+        return a.toString() + "\\/" + b.toString();
+    }
 }

@@ -24,6 +24,14 @@ public class Statements implements Iterable<Statement> {
         statements.add(statements);
     }
 
+    public String toString() {
+        String string = "";
+        while(statements.iterator().hasNext()) {
+            string = statements.iterator().next() + ".";
+        }
+        return string;
+    }
+
     public Set<Statement> getSet() {
         return this.statements;
     }

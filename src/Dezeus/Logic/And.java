@@ -24,4 +24,8 @@ public class And extends Statement {
         Statements statements = new Statements(a, b);
         return new Deduction(statements);
     }
+
+    public String toString() {
+        return a.toString() + "/\\" + b.toString();
+    }
 }

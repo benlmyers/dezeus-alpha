@@ -22,6 +22,11 @@ public class Truth extends Statement {
         return value;
     }
 
+    public String toString() {
+        if(value) return "True";
+        else return "False";
+    }
+
     // Logical Operators
 
     public static Truth and(Truth a, Truth b) {

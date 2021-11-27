@@ -23,4 +23,8 @@ public class Cond extends Statement {
     public Deduction dezeus() {
         return new Deduction(new Statements(ant), new Statements(cons));
     }
+
+    public String toString() {
+        return ant.toString() + "=>" + cons.toString();
+    }
 }

@@ -16,6 +16,8 @@ public abstract class Statement {
 
     public abstract int logicalSize();
 
+    public abstract String toString();
+
     // Convenience Methods - Logic
 
     public Statement and(Statement b) {

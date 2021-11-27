@@ -18,4 +18,8 @@ public class Bicond extends Statement {
     public Truth getTruth() {
         return Truth.bicond(a.getTruth(), b.getTruth());
     }
+
+    public String toString() {
+        return a.toString() + "<=>" + b.toString();
+    }
 }

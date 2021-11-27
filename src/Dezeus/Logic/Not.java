@@ -17,4 +17,8 @@ public class Not extends Statement {
     public Truth getTruth() {
         return Truth.not(a.getTruth());
     }
+
+    public String toString() {
+        return "!" + a.toString();
+    }
 }
