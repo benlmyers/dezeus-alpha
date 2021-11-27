@@ -18,6 +18,11 @@ public abstract class Statement {
 
     public abstract String toString();
 
+    public String groupedString() {
+        if(logicalSize() > 1) return "(" + toString() + ")";
+        else return toString();
+    }
+
     // Convenience Methods - Logic
 
     public Statement and(Statement b) {

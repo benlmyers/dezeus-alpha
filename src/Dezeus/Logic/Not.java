@@ -19,6 +19,6 @@ public class Not extends Statement {
     }
 
     public String toString() {
-        return "!" + a.toString();
+        return "!" + a.groupedString();
     }
 }

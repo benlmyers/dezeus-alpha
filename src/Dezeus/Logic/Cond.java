@@ -25,6 +25,6 @@ public class Cond extends Statement {
     }
 
     public String toString() {
-        return ant.toString() + "=>" + cons.toString();
+        return ant.groupedString() + "=>" + cons.groupedString();
     }
 }
