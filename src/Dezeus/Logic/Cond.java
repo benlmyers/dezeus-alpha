@@ -11,6 +11,12 @@ public class Cond extends Statement {
         this.cons = cons;
     }
 
+    public Cond(Statement conditional) {
+        Deduction deduction = conditional.dezeus();
+        this.ant = deduction.getAssumptions().toStatement();
+        this.cons = deduction.getKnowns().toStatement();
+    }
+
     public int logicalSize() {
         return ant.logicalSize() + cons.logicalSize();
     }
@@ -21,10 +27,10 @@ public class Cond extends Statement {
 
     @Override
     public Deduction dezeus() {
-        return new Deduction(new Statements(ant), new Statements(cons));
+        return new Deduction(new Statements(), new Statements(ant));
     }
 
     public String toString() {
-        return ant.groupedString() + "=>" + cons.groupedString();
+        return ant.groupedString() + " => " + cons.groupedString();
     }
 }

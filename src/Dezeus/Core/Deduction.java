@@ -20,4 +20,17 @@ public class Deduction {
         this.knowns = knowns;
         this.assumptions = assumptions;
     }
+
+    public void add(Deduction deduction) {
+        knowns.add(deduction.knowns);
+        assumptions.add(deduction.assumptions);
+    }
+
+    public Statements getKnowns() {
+        return knowns;
+    }
+
+    public Statements getAssumptions() {
+        return assumptions;
+    }
 }

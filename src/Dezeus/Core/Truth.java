@@ -21,8 +21,10 @@ public class Truth extends Statement {
     }
 
     public String toString() {
-        if(value) return "True";
-        else return "False";
+        if (value)
+            return "True";
+        else
+            return "False";
     }
 
     // Logical Operators
@@ -40,7 +42,7 @@ public class Truth extends Statement {
     }
 
     public static Truth cond(Truth ant, Truth cons) {
-        if(ant.getValue()) {
+        if (ant.getValue()) {
             return cons;
         } else {
             return new Truth(true);

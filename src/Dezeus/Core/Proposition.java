@@ -14,7 +14,8 @@ public class Proposition {
 
     public Truth prove() {
         Logger.log(this);
-        Show show = new Show(assumption.implies(conclusion));
+        Deduction deduction = new Deduction(new Statements(), new Statements(assumption));
+        Show show = new Show(conclusion, deduction);
         Truth truth = show.show();
         Logger.log(truth);
         return truth;

@@ -26,6 +26,6 @@ public class And extends Statement {
     }
 
     public String toString() {
-        return a.groupedString() + "/\\" + b.groupedString();
+        return a.groupedString() + " /\\ " + b.groupedString();
     }
 }

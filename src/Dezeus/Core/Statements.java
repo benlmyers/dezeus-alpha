@@ -2,13 +2,13 @@ package Dezeus.Core;
 
 import java.util.Iterator;
 import java.util.Set;
+import java.util.HashSet;
 
 public class Statements implements Iterable<Statement> {
     
-    private Set<Statement> statements;
+    private Set<Statement> statements = new HashSet<>();
 
     public Statements() {
-
     }
 
     public Statements(Statement statement) {
@@ -36,8 +36,26 @@ public class Statements implements Iterable<Statement> {
         return this.statements;
     }
 
+    public int size() {
+        return statements.size();
+    }
+
     public Iterator<Statement> iterator() {
         return statements.iterator();
+    }
+
+    public Statement toStatement() {
+        if(statements.isEmpty()) {
+            return new Truth(false);
+        } else if(statements.size() == 1) {
+            return statements.iterator().next();
+        } else {
+            Statement group = statements.iterator().next();
+            while(statements.iterator().hasNext()) {
+                group = group.and(statements.iterator().next());
+            }
+            return group;
+        }
     }
 
     public void add(Statements statements) {

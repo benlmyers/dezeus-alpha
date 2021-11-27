@@ -20,6 +20,6 @@ public class Bicond extends Statement {
     }
 
     public String toString() {
-        return a.groupedString() + "<=>" + b.groupedString();
+        return a.groupedString() + " <=> " + b.groupedString();
     }
 }
