@@ -1,5 +1,7 @@
 package Dezeus.Logic;
 
+import java.util.Set;
+
 import Dezeus.Core.*;
 
 public class Not extends Statement {
@@ -14,8 +16,8 @@ public class Not extends Statement {
         return a.logicalSize();
     }
 
-    public Truth getTruth() {
-        return Truth.not(a.getTruth());
+    public Truth getTruth(Set<Variable> props) {
+        return Truth.not(a.getTruth(props));
     }
 
     public String toString() {

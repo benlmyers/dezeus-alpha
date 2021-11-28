@@ -26,8 +26,8 @@ public class Variable extends Statement {
         return 1;
     }
 
-    public Truth getTruth() {
-        return new Truth(false);
+    public Truth getTruth(Set<Variable> props) {
+        return new Truth(props.contains(this));
     }
 
     public String toString() {

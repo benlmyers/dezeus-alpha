@@ -10,9 +10,9 @@ class Dezeus_Tests {
         Variable b = new Variable("B");
         Variable c = new Variable("C");
 
-        Statement p = a.implies(b);
-        Statement q = b.implies(c);
-        Statement r = a.implies(c);
+        Statement p = a.and(b);
+        Statement q = b.iff(c);
+        Statement r = a.or(c);
 
         Statement assumption = p.and(q);
         Statement conclusion = r;

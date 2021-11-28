@@ -1,5 +1,7 @@
 package Dezeus.Logic;
 
+import java.util.Set;
+
 import Dezeus.Core.*;
 
 public class Cond extends Statement {
@@ -12,7 +14,7 @@ public class Cond extends Statement {
     }
 
     public Cond(Statement conditional) {
-        Deduction deduction = conditional.dezeus();
+        Deduction deduction = conditional.getDeduction();
         this.ant = deduction.getAssumptions().toStatement();
         this.cons = deduction.getKnowns().toStatement();
     }
@@ -21,8 +23,8 @@ public class Cond extends Statement {
         return ant.logicalSize() + cons.logicalSize();
     }
 
-    public Truth getTruth() {
-        return Truth.cond(ant.getTruth(), cons.getTruth());
+    public Truth getTruth(Set<Variable> props) {
+        return Truth.cond(ant.getTruth(props), cons.getTruth(props));
     }
 
     @Override
@@ -31,7 +33,7 @@ public class Cond extends Statement {
     }
 
     @Override
-    public Deduction dezeus() {
+    public Deduction getDeduction() {
         return new Deduction(new Statements(), new Statements(ant));
     }
 

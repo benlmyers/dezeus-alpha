@@ -26,8 +26,8 @@ public class Statements implements Iterable<Statement> {
 
     public String toString() {
         String string = "";
-        while(statements.iterator().hasNext()) {
-            string = statements.iterator().next() + ".";
+        for(Statement statement: statements) {
+            string = statement + ".";
         }
         return string;
     }
@@ -38,8 +38,8 @@ public class Statements implements Iterable<Statement> {
 
     public Set<Variable> getVariables() {
         Set<Variable> variables = new HashSet<>();
-        while(statements.iterator().hasNext()) {
-            variables.addAll(statements.iterator().next().getVariables());
+        for(Statement statement: statements) {
+            variables.addAll(statement.getVariables());
         }
         return variables;
     }
@@ -59,16 +59,16 @@ public class Statements implements Iterable<Statement> {
             return statements.iterator().next();
         } else {
             Statement group = statements.iterator().next();
-            while(statements.iterator().hasNext()) {
-                group = group.and(statements.iterator().next());
+            for(Statement statement: statements) {
+                group = group.and(statement);
             }
             return group;
         }
     }
 
     public void add(Statements statements) {
-        while(statements.iterator().hasNext()) {
-            add(statements.iterator().next());
+        for(Statement statement: statements) {
+            add(statement);
         }
     }
 

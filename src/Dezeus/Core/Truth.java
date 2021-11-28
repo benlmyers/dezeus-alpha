@@ -1,5 +1,7 @@
 package Dezeus.Core;
 
+import java.util.Set;
+
 public class Truth extends Statement {
 
     private Boolean value;
@@ -8,7 +10,7 @@ public class Truth extends Statement {
         this.value = value;
     }
 
-    public Truth getTruth() {
+    public Truth getTruth(Set<Variable> props) {
         return this;
     }
 

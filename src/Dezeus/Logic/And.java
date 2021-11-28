@@ -1,5 +1,7 @@
 package Dezeus.Logic;
 
+import java.util.Set;
+
 import Dezeus.Core.*;
 
 public class And extends Statement {
@@ -15,8 +17,8 @@ public class And extends Statement {
         return a.logicalSize() + b.logicalSize();
     }
 
-    public Truth getTruth() {
-        return Truth.and(a.getTruth(), b.getTruth());
+    public Truth getTruth(Set<Variable> props) {
+        return Truth.and(a.getTruth(props), b.getTruth(props));
     }
 
     @Override
@@ -25,7 +27,7 @@ public class And extends Statement {
     }
 
     @Override
-    public Deduction dezeus() {
+    public Deduction getDeduction() {
         Statements statements = new Statements(a, b);
         return new Deduction(statements);
     }

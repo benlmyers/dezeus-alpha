@@ -1,5 +1,7 @@
 package Dezeus.Logic;
 
+import java.util.Set;
+
 import Dezeus.Core.*;
 
 public class Or extends Statement {
@@ -15,8 +17,8 @@ public class Or extends Statement {
         return a.logicalSize() + b.logicalSize();
     }
 
-    public Truth getTruth() {
-        return Truth.or(a.getTruth(), b.getTruth());
+    public Truth getTruth(Set<Variable> props) {
+        return Truth.or(a.getTruth(props), b.getTruth(props));
     }
 
     public String toString() {

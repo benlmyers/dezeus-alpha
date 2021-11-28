@@ -2,7 +2,7 @@ package Dezeus.Core;
 
 public class Logger {
 
-    private Logger() {
+    protected Logger() {
     }
 
     public static void log(String message) {
@@ -14,7 +14,7 @@ public class Logger {
     }
 
     public static void title(String title) {
-        log("------[" + title + "]------");
+        log("------[ " + title + " ]------");
     }
 
     public static void log(Show show) {
@@ -22,7 +22,7 @@ public class Logger {
     }
 
     public static void log(Proposition proposition) {
-        log("Proving Proposition " + proposition.getNumber() + ": " + proposition + logicalSizeString(proposition.getStatement()));
+        log("Proving " + proposition + logicalSizeString(proposition.getStatement()));
     }
 
     public static void log(Truth truth) {

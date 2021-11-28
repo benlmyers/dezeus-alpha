@@ -6,7 +6,7 @@ import Dezeus.Logic.*;
 
 public abstract class Statement {
 
-    public abstract Truth getTruth();
+    public abstract Truth getTruth(Set<Variable> props);
 
     public Set<Variable> getVariables() {
         return getChildren().getVariables();
@@ -22,7 +22,7 @@ public abstract class Statement {
 
     // Deduction Methods
 
-    public Deduction dezeus() {
+    public Deduction getDeduction() {
         return new Deduction(this);
     }
 

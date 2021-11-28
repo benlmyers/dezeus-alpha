@@ -1,5 +1,7 @@
 package Dezeus.Logic;
 
+import java.util.Set;
+
 import Dezeus.Core.*;
 
 public class Bicond extends Statement {
@@ -15,8 +17,8 @@ public class Bicond extends Statement {
         return a.logicalSize() + b.logicalSize();
     }
 
-    public Truth getTruth() {
-        return Truth.bicond(a.getTruth(), b.getTruth());
+    public Truth getTruth(Set<Variable> props) {
+        return Truth.bicond(a.getTruth(props), b.getTruth(props));
     }
 
     public String toString() {
