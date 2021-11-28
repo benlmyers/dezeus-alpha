@@ -47,7 +47,7 @@ public class TruthTableStrategy implements Strategy {
             } else {
                 premisesSegment += premise.toString() + " (X) \t";
                 if (LOG_TABLE)
-                    Logger.log(propsSegment + "| " + premisesSegment + " ..");
+                    Logger.log(propsSegment + "| " + premisesSegment + "..");
                 throw new PremiseBrokenException(premise);
             }
         }

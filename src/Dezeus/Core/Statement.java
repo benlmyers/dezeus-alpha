@@ -1,5 +1,6 @@
 package Dezeus.Core;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import Dezeus.Logic.*;
@@ -9,7 +10,12 @@ public abstract class Statement {
     public abstract Truth getTruth(Set<Variable> props);
 
     public Set<Variable> getVariables() {
-        return getChildren().getVariables();
+        Statements children = getChildren();
+        if(children != null) {
+            return children.getVariables();
+        } else {
+            return new HashSet<>();
+        }
     }
 
     public Boolean hasChildren() {
