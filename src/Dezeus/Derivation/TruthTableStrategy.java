@@ -29,18 +29,18 @@ public class TruthTableStrategy implements Strategy {
         String propsSegment = "";
         for (Variable variable: allVariables) {
             if(props.contains(variable)) {
-                propsSegment += variable.toString() + "(T) \t";
+                propsSegment += variable.toString() + " (T) \t";
             } else {
-                propsSegment += variable.toString() + "(F) \t";
+                propsSegment += variable.toString() + " (F) \t";
             }
         }
         String premisesSegment = "";
         for (Statement premise : premises) {
             Truth rowTruth = premise.getTruth(props);
             if (rowTruth.getValue()) {
-                premisesSegment += premise.toString() + "(✔) \t";
+                premisesSegment += premise.toString() + " (✔) \t";
             } else {
-                premisesSegment += premise.toString() + "(✖) \t";
+                premisesSegment += premise.toString() + " (✖) \t";
                 Logger.log(propsSegment + "| " + premisesSegment + " ⬇");
                 throw new PremiseBrokenException(premise);
             }
@@ -67,7 +67,8 @@ public class TruthTableStrategy implements Strategy {
         for (Statement known : knowns) {
             knownsSegment += known.toString() + "(-) \t";
         }
-        System.out.println(propsSegment + "| " + knownsSegment + "|- " + conclusion + " (-)");
+        Logger.log(propsSegment + "| " + knownsSegment + "|- " + conclusion + " (-)");
+        Logger.line();
     }
 
     private static <T> Set<Set<T>> getSubsets(Set<T> original) {

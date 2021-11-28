@@ -2,6 +2,8 @@ package Dezeus.Core;
 
 public class Logger {
 
+    private static int titleRowLength = 24;
+
     protected Logger() {
     }
 
@@ -10,11 +12,16 @@ public class Logger {
     }
 
     public static void line() {
-        log("------------------------");
+        String line = "";
+        for(int i = 0; i < titleRowLength; i++) {
+            line += "-";
+        }
+        log(line);
     }
 
     public static void title(String title) {
-        log("------[ " + title + " ]------");
+        log("----------[ " + title + " ]----------");
+        titleRowLength = title.length() + 24;
     }
 
     public static void log(Show show) {
