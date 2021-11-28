@@ -2,9 +2,10 @@ package Dezeus.Core;
 
 import java.util.Iterator;
 import java.util.Set;
+import java.util.Collection;
 import java.util.HashSet;
 
-public class Statements implements Iterable<Statement> {
+public class Statements implements Collection<Statement> {
     
     private Set<Statement> statements = new HashSet<>();
 
@@ -72,7 +73,58 @@ public class Statements implements Iterable<Statement> {
         }
     }
 
-    public void add(Statement statement) {
-        statements.add(statement);
+    @Override
+    public boolean isEmpty() {
+        return statements.isEmpty();
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        return statements.contains(o);
+    }
+
+    @Override
+    public Object[] toArray() {
+        return statements.toArray();
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {
+        return statements.toArray(a);
+    }
+
+    @Override
+    public boolean add(Statement e) {
+        return statements.add(e);
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        return statements.remove(o);
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return statements.containsAll(c);
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends Statement> c) {
+        return statements.addAll(c);
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return statements.removeAll(c);
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return statements.retainAll(c);
+    }
+
+    @Override
+    public void clear() {
+        statements.clear();
     }
 }

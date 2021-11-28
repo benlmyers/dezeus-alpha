@@ -1,10 +1,12 @@
+package Examples.Logic;
+
 import Dezeus.Core.*;
 
-class Dezeus_Tests {
-
+public class TransitiveLogicExample {
+    
     public static void main(String[] args) {
 
-        System.out.println("Dezeus (Alpha) Tests\n");
+        System.out.println("Transitive Logic Example\n");
 
         Variable a = new Variable("A");
         Variable b = new Variable("B");

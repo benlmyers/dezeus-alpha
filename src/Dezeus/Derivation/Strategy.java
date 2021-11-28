@@ -4,5 +4,5 @@ import Dezeus.Core.Show;
 
 public interface Strategy {
 
-    public void dezeus(Show show) throws DerivationException;
+    public Justification dezeus(Show show) throws DerivationException;
 }

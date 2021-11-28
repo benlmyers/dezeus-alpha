@@ -9,9 +9,12 @@ public class TruthTableStrategy implements Strategy {
 
     public static final boolean LOG_TABLE = true;
 
-    public void dezeus(Show show) throws DerivationException {
+    public Justification dezeus(Show show) throws DerivationException {
         Set<Variable> variables = show.getStatement().getVariables();
         Statements knowns = show.getDeduction().getKnowns();
+        Statements assumptions = show.getDeduction().getAssumptions();
+        knowns.addAll(assumptions);
+        variables.addAll(knowns.getVariables());
         Statement conclusion = show.getStatement();
         logHeader(variables, knowns, conclusion);
         Set<Set<Variable>> rows = getSubsets(variables);
@@ -19,16 +22,18 @@ public class TruthTableStrategy implements Strategy {
             try {
                 rowValid(row, variables, knowns, conclusion);
             } catch (PremiseBrokenException e) {
-                continue;
             }
         }
+        if (LOG_TABLE)
+            Logger.line();
+        return new Justification("TT");
     }
 
-    private boolean rowValid(Set<Variable> props, Set<Variable> allVariables, Statements premises, Statement conclusion)
+    private void rowValid(Set<Variable> props, Set<Variable> allVariables, Statements premises, Statement conclusion)
             throws DerivationException {
         String propsSegment = "";
-        for (Variable variable: allVariables) {
-            if(props.contains(variable)) {
+        for (Variable variable : allVariables) {
+            if (props.contains(variable)) {
                 propsSegment += variable.toString() + " (T) \t";
             } else {
                 propsSegment += variable.toString() + " (F) \t";
@@ -38,20 +43,23 @@ public class TruthTableStrategy implements Strategy {
         for (Statement premise : premises) {
             Truth rowTruth = premise.getTruth(props);
             if (rowTruth.getValue()) {
-                premisesSegment += premise.toString() + " (✔) \t";
+                premisesSegment += premise.toString() + " (O) \t";
             } else {
-                premisesSegment += premise.toString() + " (✖) \t";
-                Logger.log(propsSegment + "| " + premisesSegment + " ⬇");
+                premisesSegment += premise.toString() + " (X) \t";
+                if (LOG_TABLE)
+                    Logger.log(propsSegment + "| " + premisesSegment + " ..");
                 throw new PremiseBrokenException(premise);
             }
         }
         Truth conclusionTruth = conclusion.getTruth(props);
-        if (!conclusionTruth.getValue()) {
-            Logger.log(propsSegment + "| " + premisesSegment + "|- " + conclusion + " (✖)");
-            throw new ConclusionFailedException(conclusion);
+        if (conclusionTruth.getValue()) {
+            if (LOG_TABLE)
+                Logger.log(propsSegment + "| " + premisesSegment + "|- " + conclusion + " (O)");
+            return;
         } else {
-            Logger.log(propsSegment + "| " + premisesSegment + "|- " + conclusion + " (✔) ⬇");
-            return true;
+            if (LOG_TABLE)
+                Logger.log(propsSegment + "| " + premisesSegment + "|- " + conclusion + " (X) ..");
+            throw new ConclusionFailedException(conclusion);
         }
     }
 
@@ -61,11 +69,11 @@ public class TruthTableStrategy implements Strategy {
         Logger.title("Truth Table");
         String propsSegment = "";
         for (Variable prop : props) {
-            propsSegment += prop.toString() + "(-) \t";
+            propsSegment += prop.toString() + " (-) \t";
         }
         String knownsSegment = "";
         for (Statement known : knowns) {
-            knownsSegment += known.toString() + "(-) \t";
+            knownsSegment += known.toString() + " (-) \t";
         }
         Logger.log(propsSegment + "| " + knownsSegment + "|- " + conclusion + " (-)");
         Logger.line();
@@ -109,7 +117,7 @@ public class TruthTableStrategy implements Strategy {
 
         @Override
         public void printStackTrace() {
-            System.out.println("Conclusion" + conclusion + " failed.");
+            System.out.println("Conclusion " + conclusion + " failed.");
         }
     }
 }

@@ -1,8 +1,6 @@
 package Dezeus.Core;
 
-import Dezeus.Derivation.DerivationException;
-import Dezeus.Derivation.Strategy;
-import Dezeus.Derivation.TruthTableStrategy;
+import Dezeus.Derivation.*;
 
 public class Show {
 
@@ -25,14 +23,15 @@ public class Show {
         // Use existing theorems to aid in proving.
         // Otherwise, use a truth table to brute force the proof.
         strategy = new TruthTableStrategy();
+        Justification reason;
         try {
-            strategy.dezeus(this);
-        } catch(DerivationException e) {
-            Logger.line();
+            reason = strategy.dezeus(this);
+        } catch (DerivationException e) {
             Logger.log("[x] Derivation Exception");
             e.printStackTrace();
             return new Truth(false);
         }
+        Logger.log(" " + deduction.getLevelIndentation() + statement + ".\t\t" + reason + "\t<QED>");
         return new Truth(true);
     }
 
