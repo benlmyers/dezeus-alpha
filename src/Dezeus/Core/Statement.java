@@ -3,6 +3,8 @@ package Dezeus.Core;
 import java.util.HashSet;
 import java.util.Set;
 
+import Dezeus.Derivation.InvalidException;
+import Dezeus.Derivation.Justification;
 import Dezeus.Logic.*;
 
 public abstract class Statement {
@@ -11,7 +13,7 @@ public abstract class Statement {
 
     public Set<Variable> getVariables() {
         Statements children = getChildren();
-        if(children != null) {
+        if (children != null) {
             return children.getVariables();
         } else {
             return new HashSet<>();
@@ -27,6 +29,8 @@ public abstract class Statement {
     }
 
     // Deduction Methods
+
+    public abstract Justification dezeus(Set<Variable> trueVariables) throws InvalidException;
 
     public Deduction getDeduction() {
         return new Deduction(this);

@@ -26,7 +26,7 @@ public class TruthTableStrategy implements Strategy {
         }
         if (LOG_TABLE)
             Logger.line();
-        return new Justification("TT");
+        return new Justification("Truth Table", "TT");
     }
 
     private void rowValid(Set<Variable> props, Set<Variable> allVariables, Statements premises, Statement conclusion)
@@ -98,6 +98,7 @@ public class TruthTableStrategy implements Strategy {
         final Statement premise;
 
         PremiseBrokenException(Statement premise) {
+            super("Premise Broken");
             this.premise = premise;
         }
 
@@ -112,6 +113,7 @@ public class TruthTableStrategy implements Strategy {
         final Statement conclusion;
 
         ConclusionFailedException(Statement conclusion) {
+            super("Conclusion Failed");
             this.conclusion = conclusion;
         }
 

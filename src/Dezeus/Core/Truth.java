@@ -2,6 +2,9 @@ package Dezeus.Core;
 
 import java.util.Set;
 
+import Dezeus.Derivation.InvalidException;
+import Dezeus.Derivation.Justification;
+
 public class Truth extends Statement {
 
     private Boolean value;
@@ -29,7 +32,12 @@ public class Truth extends Statement {
             return "False";
     }
 
-    // Logical Operators
+    public Justification dezeus(Set<Variable> trueVariables) throws InvalidException {
+        if (value)
+            return new Justification("Truth", ".");
+        else
+            throw new TruthDerivationException();
+    }
 
     public static Truth and(Truth a, Truth b) {
         return new Truth(a.getValue() && b.getValue());
@@ -53,5 +61,12 @@ public class Truth extends Statement {
 
     public static Truth bicond(Truth a, Truth b) {
         return new Truth(a.getValue().equals(b.getValue()));
+    }
+
+    public class TruthDerivationException extends InvalidException {
+
+        public TruthDerivationException() {
+            super("This statement is a false Truth.");
+        }
     }
 }

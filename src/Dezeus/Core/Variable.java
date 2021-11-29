@@ -1,6 +1,10 @@
 package Dezeus.Core;
 
 import java.util.Set;
+
+import Dezeus.Derivation.InvalidException;
+import Dezeus.Derivation.Justification;
+
 import java.util.HashSet;
 
 public class Variable extends Statement {
@@ -32,5 +36,21 @@ public class Variable extends Statement {
 
     public String toString() {
         return this.name;
+    }
+
+    @Override
+    public Justification dezeus(Set<Variable> trueVariables) throws InvalidException {
+        if (trueVariables.contains(this)) {
+            return new Justification("Variable True", "VT");
+        } else {
+            throw new VariableDerivationException();
+        }
+    }
+
+    public class VariableDerivationException extends InvalidException {
+
+        public VariableDerivationException() {
+            super("This statement is a false variable.");
+        }
     }
 }
