@@ -8,5 +8,4 @@ public class AssumptionStrategy implements Strategy {
         
         return null;
     }
-    
 }
